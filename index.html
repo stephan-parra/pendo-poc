@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Enquiry Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    (function(apiKey){
+        (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=o._q||[];
+        v=['initialize','identify','updateOptions','pageLoad','track'];for(w=0,x=v.length;w<x;++w)(function(m){
+            o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+            y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+            z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+    })('4199b353-ad17-41cd-6407-2737f466024c');
+    </script>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span>Protect Cables - Protect Pipes - Save Lives</span>
+    </div>
+    <div class="header-actions">
+      <span>Accessibility</span>
+      <button class="btn">New Enquiry</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li class="active">Home</li>
+        <li>Dashboard</li>
+        <li>New Enquiry</li>
+        <li>Message of the Day</li>
+        <li>Service Announcements</li>
+        <li>History</li>
+      </ul>
+    </aside>
+
+    <main>
+      <div class="user-info">
+        <h2>Home</h2>
+        <p>(USER) <strong>Taylors Stumps</strong></p>
+      </div>
+
+      <section class="stats">
+        <div class="card"> <h3>Month to Date</h3> <p>1</p> </div>
+        <div class="card"> <h3>Active Enquiries</h3> <p>3</p> </div>
+        <div class="card"> <h3>Year to Date</h3> <p>17</p> </div>
+        <div class="card"> <h3>Total Enquiries</h3> <p>3,362</p> </div>
+      </section>
+
+      <section class="history">
+        <h3>Recent History</h3>
+        <div class="history-item">
+          <div class="left">
+            <strong>36862970</strong><br/>
+            <span>Information Only</span>
+          </div>
+          <div class="right">
+            <div>Submit Date<br/><span>04/04/2025 - 11:02:51 am</span></div>
+            <div>Enquiry Start Date<br/><span>05/04/2025</span></div>
+            <div>User Reference<br/><span>Pendo Integration PoC</span></div>
+          </div>
+        </div>
+        <div class="history-item">
+            <div class="left">
+              <strong>36862971</strong><br/>
+              <span>Information Only</span>
+            </div>
+            <div class="right">
+              <div>Submit Date<br/><span>04/04/2025 - 11:02:51 am</span></div>
+              <div>Enquiry Start Date<br/><span>05/04/2025</span></div>
+              <div>User Reference<br/><span>Pendo Integration PoC</span></div>
+            </div>
+          </div>
+          <div class="history-item">
+            <div class="left">
+              <strong>36862972</strong><br/>
+              <span>Information Only</span>
+            </div>
+            <div class="right">
+              <div>Submit Date<br/><span>04/04/2025 - 11:02:51 am</span></div>
+              <div>Enquiry Start Date<br/><span>05/04/2025</span></div>
+              <div>User Reference<br/><span>Pendo Integration PoC</span></div>
+            </div>
+          </div>
+          <div class="history-item">
+            <div class="left">
+              <strong>36862973</strong><br/>
+              <span>Information Only</span>
+            </div>
+            <div class="right">
+              <div>Submit Date<br/><span>04/04/2025 - 11:02:51 am</span></div>
+              <div>Enquiry Start Date<br/><span>05/04/2025</span></div>
+              <div>User Reference<br/><span>Pendo Integration PoC</span></div>
+            </div>
+          </div>
+          <div class="history-item">
+            <div class="left">
+              <strong>36862974</strong><br/>
+              <span>Information Only</span>
+            </div>
+            <div class="right">
+              <div>Submit Date<br/><span>04/04/2025 - 11:02:51 am</span></div>
+              <div>Enquiry Start Date<br/><span>05/04/2025</span></div>
+              <div>User Reference<br/><span>Pendo Integration PoC</span></div>
+            </div>
+          </div>
+        <!-- Repeat history-item blocks as needed -->
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p>Powered by: OneCallAccess<br/>Version: 5.1.24535.1084<br/>© PelicanCorp 2001–2023</p>
+  </footer>
+
+<!-- JS for SweetAlert2 popup -->
+<script>
+    const btn = document.querySelector('.btn');
+    btn.onclick = () => {
+      Swal.fire({
+        title: 'New Enquiry Clicked!',
+        text: 'You clicked the New Enquiry button.',
+        icon: 'info',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#004488'
+      });
+  
+      // Optional: Track event with Pendo
+      if (window.pendo) {
+        pendo.track('new-enquiry-clicked');
+      }
+    };
+  
+    // Pendo Initialization (Step 2/3)
+    if (window.pendo) {
+      pendo.initialize({
+        visitor: {
+          id: 'taylors-stumps-001'  // Step 3: Replace with real user ID or mock
+        },
+        account: {
+          id: 'demo-account'        // Optional: Add account-level grouping if needed
+        }
+      });
+    }
+  </script>  
+</body>
+</html>
