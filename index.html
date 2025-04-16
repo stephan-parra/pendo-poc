@@ -23,9 +23,11 @@
       <span>Protect Cables - Protect Pipes - Save Lives</span>
     </div>
     <div class="header-actions">
-      <span>Accessibility</span>
-      <button class="btn">New Enquiry</button>
-    </div>
+        <span>Accessibility</span>
+        <button class="btn btn-topup">Top-Up Service</button>
+        <button class="btn btn-emapsite">EMAPSITE</button>
+        <button class="btn btn-primary">New Enquiry</button>
+      </div>          
   </header>
 
   <div class="container">
@@ -121,33 +123,49 @@
 
 <!-- JS for SweetAlert2 popup -->
 <script>
-    const btn = document.querySelector('.btn');
-    btn.onclick = () => {
-      Swal.fire({
-        title: 'New Enquiry Clicked!',
-        text: 'You clicked the New Enquiry button.',
-        icon: 'info',
-        confirmButtonText: 'OK',
-        confirmButtonColor: '#004488'
-      });
+    document.addEventListener('DOMContentLoaded', () => {
+      // New Enquiry Button
+      const btnNewEnquiry = document.querySelector('.btn-primary');
+      btnNewEnquiry.onclick = () => {
+        Swal.fire({
+          title: 'New Enquiry Clicked!',
+          text: 'You clicked the New Enquiry button.',
+          icon: 'info',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#004488'
+        });
   
-      // Optional: Track event with Pendo
-      if (window.pendo) {
-        pendo.track('new-enquiry-clicked');
-      }
-    };
-  
-    // Pendo Initialization (Step 2/3)
-    if (window.pendo) {
-      pendo.initialize({
-        visitor: {
-          id: 'taylors-stumps-001'  // Step 3: Replace with real user ID or mock
-        },
-        account: {
-          id: 'demo-account'        // Optional: Add account-level grouping if needed
+        if (window.pendo) {
+          pendo.track('new-enquiry-clicked');
         }
-      });
-    }
-  </script>  
+      };
+  
+      // Top-Up Service Button
+      const btnTopUp = document.querySelector('.btn-topup');
+      btnTopUp.onclick = () => {
+        Swal.fire('Top-Up Service clicked');
+        if (window.pendo) pendo.track('top-up-clicked');
+      };
+  
+      // EMAPSITE Button
+      const btnEmapsite = document.querySelector('.btn-emapsite');
+      btnEmapsite.onclick = () => {
+        Swal.fire('EMAPSITE clicked');
+        if (window.pendo) pendo.track('emapsite-clicked');
+      };
+  
+      // Initialize Pendo Tracking
+      if (window.pendo) {
+        pendo.initialize({
+          visitor: {
+            id: 'taylors-stumps-001' // Replace with real user ID in production
+          },
+          account: {
+            id: 'demo-account' // Optional: associate with an account/org
+          }
+        });
+      }
+    });
+  </script>   
 </body>
 </html>
