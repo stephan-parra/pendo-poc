@@ -45,7 +45,7 @@
     <main>
       <div class="user-info">
         <h2>Home</h2>
-        <p>(USER) <strong>Taylors Stumps</strong></p>
+        <p>(USER) <strong id="username"></strong></p>
       </div>
 
       <section class="stats">
@@ -124,7 +124,21 @@
 <!-- JS for SweetAlert2 popup -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // New Enquiry Button
+      // 🔀 Randomize username
+      const usernames = [
+        "Taylors Stumps",
+        "CableFinder Pro",
+        "DiggerSafe Ltd",
+        "GeoSurveyor",
+        "Urban Locate",
+        "SafeDig Systems",
+        "LSBUD Partner",
+        "PelicanOps"
+      ];
+      const randomUsername = usernames[Math.floor(Math.random() * usernames.length)];
+      document.getElementById('username').textContent = randomUsername;
+  
+      // ✅ New Enquiry Button
       const btnNewEnquiry = document.querySelector('.btn-primary');
       btnNewEnquiry.onclick = () => {
         Swal.fire({
@@ -140,32 +154,32 @@
         }
       };
   
-      // Top-Up Service Button
+      // ✅ Top-Up Service Button
       const btnTopUp = document.querySelector('.btn-topup');
       btnTopUp.onclick = () => {
         Swal.fire('Top-Up Service clicked');
         if (window.pendo) pendo.track('top-up-clicked');
       };
   
-      // EMAPSITE Button
+      // ✅ EMAPSITE Button
       const btnEmapsite = document.querySelector('.btn-emapsite');
       btnEmapsite.onclick = () => {
         Swal.fire('EMAPSITE clicked');
         if (window.pendo) pendo.track('emapsite-clicked');
       };
   
-      // Initialize Pendo Tracking
+      // ✅ Initialize Pendo Tracking
       if (window.pendo) {
         pendo.initialize({
           visitor: {
-            id: 'taylors-stumps-001' // Replace with real user ID in production
+            id: randomUsername.replace(/\s+/g, '-').toLowerCase() // Use username as visitor ID
           },
           account: {
-            id: 'demo-account' // Optional: associate with an account/org
+            id: 'demo-account'
           }
         });
       }
     });
-  </script>   
+  </script>    
 </body>
 </html>
